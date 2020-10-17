@@ -1,0 +1,10 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.inset-offset-top-right {
+  top: -0.5rem;
+  right: -0.5rem;
+}
