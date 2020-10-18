@@ -10,7 +10,8 @@ const Card = ({ card, cardIndex, columnIndex }) => {
 
   const [focused, selected, editingTitle, classNames] = useCard(
     columnIndex,
-    cardIndex
+    cardIndex,
+    card
   );
 
   return (

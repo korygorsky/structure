@@ -6,7 +6,7 @@ import {
   MODE_EDIT_CARD_TITLE,
 } from "../data/modes";
 
-const useCard = (columnIndex, cardIndex) => {
+const useCard = (columnIndex, cardIndex, card) => {
   const {
     mode,
     selectedCards,
@@ -19,8 +19,8 @@ const useCard = (columnIndex, cardIndex) => {
   const editingTitle = isFocusedCard && mode === MODE_EDIT_CARD_TITLE;
   const selected =
     mode === MODE_NAVIGATE &&
-    selectedCards.filter((select) => {
-      return select.card === cardIndex && select.column === columnIndex;
+    selectedCards.filter((selectedCardId) => {
+      return selectedCardId === card.id;
     }).length > 0;
 
   let borderColor = "border-gray-300";

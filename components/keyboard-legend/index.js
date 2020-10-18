@@ -1,6 +1,10 @@
 import { Fragment, useContext } from "react";
 import Key from "./key";
-import { MODE_NAVIGATE, MODE_EDIT_CARD } from "../../data/modes";
+import {
+  MODE_NAVIGATE,
+  MODE_EDIT_CARD,
+  MODE_EDIT_CARD_TITLE,
+} from "../../data/modes";
 import { StoreContext } from "../../data/store";
 
 const KeyboardLegend = () => {
@@ -31,7 +35,14 @@ const KeyboardLegend = () => {
       {mode === MODE_EDIT_CARD && (
         <Fragment>
           <Key action="Navigate">↑↓</Key>
+          <Key action="Edit Title">e</Key>
           <Key action="Back">esc</Key>
+        </Fragment>
+      )}
+      {mode === MODE_EDIT_CARD_TITLE && (
+        <Fragment>
+          <Key action="Save">enter</Key>
+          <Key action="Cancel">esc</Key>
         </Fragment>
       )}
     </div>

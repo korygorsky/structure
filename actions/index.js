@@ -101,32 +101,17 @@ export const resolvers = {
     };
   },
   toggleCardSelection: (state) => {
-    const isAlreadySelected =
-      state.selectedCards.filter((selectedCard) => {
-        return (
-          selectedCard.card === state.focusedCardIndex &&
-          selectedCard.column === state.focusedColumnIndex
-        );
-      }).length > 0;
-    const previouslySelectedCards = state.selectedCards;
-
-    if (isAlreadySelected) {
+    if (state.selectedCards.includes(state.focusedCardId)) {
       return {
         ...state,
-        selectedCards: previouslySelectedCards.filter((selectedCard) => {
-          return !(
-            selectedCard.card === state.focusedCardIndex &&
-            selectedCard.column === state.focusedColumnIndex
-          );
+        selectedCards: state.selectedCards.filter((selectedCardId) => {
+          return !(selectedCardId === state.focusedCardId);
         }),
       };
     } else {
       return {
         ...state,
-        selectedCards: [
-          ...previouslySelectedCards,
-          { card: state.focusedCardIndex, column: state.focusedColumnIndex },
-        ],
+        selectedCards: [...state.selectedCards, state.focusedCardId],
       };
     }
   },

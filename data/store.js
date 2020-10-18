@@ -1,26 +1,16 @@
 import React, { useState, useReducer } from "react";
-import { MODE_NAVIGATE } from "../data/modes";
+import uniqid from "uniqid";
+import { MODE_EDIT_CARD, MODE_NAVIGATE } from "../data/modes";
 import { actions, resolvers } from "../actions/index";
 
 const initialStateGenerator = () => {
+  const firstCardId = uniqid();
   return {
-    structure: [
-      [
-        { title: "First Screen", parts: [{ name: "Part 1" }] },
-        { title: "Second Screen", parts: [] },
-        { title: "Third Screen", parts: [] },
-        { title: "Fourth Screen", parts: [] },
-      ],
-      [
-        { title: "First Screen", parts: [] },
-        { title: "Second Screen", parts: [] },
-      ],
-
-      [{ title: "First Screen", parts: [] }],
-    ],
-    mode: MODE_NAVIGATE,
+    structure: [[{ id: firstCardId, title: "Entry Point", parts: [] }]],
+    mode: MODE_EDIT_CARD,
     focusedColumnIndex: 0,
     focusedCardIndex: 0,
+    focusedCardId: firstCardId,
     activePart: 0,
     selectedCards: [],
   };
@@ -57,25 +47,19 @@ export const StoreContext = React.createContext(null);
 
 export default ({ children }) => {
   const [state, dispatch] = useReducer(reducer, null, initialStateGenerator);
-  const [activePart, setActivePart] = useState(0);
-  const [selectedCards, setSelectedCards] = useState([]);
 
   const hasSelectedCards = state.selectedCards.length > 0 ? true : false;
 
   const store = {
     dispatch,
-    // data
     structure: state.structure,
     mode: state.mode,
     focusedColumnIndex: state.focusedColumnIndex,
     focusedCardIndex: state.focusedCardIndex,
+    focusedCardId: state.focusedCardId,
     activePart: state.activePart,
     selectedCards: state.selectedCards,
     hasSelectedCards,
-    // setters
-
-    setActivePart,
-    setSelectedCards,
   };
 
   return (

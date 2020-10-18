@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
+import { StoreContext } from "../../../data/store";
 
 const Title = ({ value, isEditing }) => {
+  const { dispatch } = useContext(StoreContext);
   const inputEl = useRef(null);
   const [inputValue, setInputValue] = useState(value);
 
@@ -29,7 +31,7 @@ const Title = ({ value, isEditing }) => {
 
   return (
     <div className="p-2 font-bold border-b border-solid border-gray-300">
-      {!isEditing && value} {isEditing}
+      {!isEditing && value}
       {isEditing && (
         <input
           ref={inputEl}
