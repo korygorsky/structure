@@ -62,7 +62,7 @@ const useHotKeys = () => {
     "enter",
     () => {
       if (mode === MODE_NAVIGATE) {
-        dispatch({ type: actions.ENTER_EDIT_MODE });
+        dispatch({ type: actions.ENTER_EDIT_CARD_MODE });
       }
     },
     {},
@@ -74,7 +74,7 @@ const useHotKeys = () => {
       if (mode === MODE_NAVIGATE && hasSelectedCards) {
         dispatch({ type: actions.EXIT_SELECTION_MODE });
       } else if (mode === MODE_EDIT_CARD) {
-        dispatch({ type: actions.EXIT_EDIT_MODE });
+        dispatch({ type: actions.EXIT_EDIT_CARD_MODE });
       } else if (mode === MODE_EDIT_CARD_TITLE) {
         dispatch({ type: actions.EXIT_EDIT_CARD_TITLE_MODE });
       }
