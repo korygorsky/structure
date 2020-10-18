@@ -4,7 +4,10 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "cypress:run": "npx cypress run",
+    "cypress:open": "npx cypress run",
+    "test": "start-server-and-test dev http://localhost:3000 cypress:run"
   },
   "dependencies": {
     "next": "latest",
@@ -14,5 +17,9 @@
     "tailwindcss": "^1.9.2",
     "uniqid": "^5.2.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^5.4.0",
+    "start-server-and-test": "^1.11.5"
+  }
 }

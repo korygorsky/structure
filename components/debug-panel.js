@@ -6,7 +6,7 @@ const DebugPanel = () => {
     StoreContext
   );
   return (
-    <div>
+    <div className="fixed right-0 top-0">
       <div>focusedColumnIndex: {focusedColumnIndex}</div>
       <div>focusedCardIndex: {focusedCardIndex}</div>
       <div>mode: {mode}</div>

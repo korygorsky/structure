@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { StoreContext } from "../../../data/store";
+import { StoreContext } from "../../data/store";
 import Part from "../part";
 import Title from "./title";
 import SelectionBubble from "./selection-bubble";
-import useCard from "../../../hooks/useCard";
+import useCard from "../../hooks/useCard";
 
 const Card = ({ card, cardIndex, columnIndex }) => {
   const { selectedCards } = useContext(StoreContext);
@@ -15,7 +15,9 @@ const Card = ({ card, cardIndex, columnIndex }) => {
   );
 
   return (
-    <div className={`relative ${classNames} border-solid shadow mb-4`}>
+    <div
+      className={`relative ${classNames} rounded-lg w-56 border-solid shadow mb-4`}
+    >
       {selectedCards.length > 0 && <SelectionBubble selected={selected} />}
       <Title value={card.title} isEditing={editingTitle} />
       <div>

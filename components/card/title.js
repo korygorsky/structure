@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useContext } from "react";
-import { StoreContext } from "../../../data/store";
+import { StoreContext } from "../../data/store";
 
 const Title = ({ value, isEditing }) => {
   const { dispatch } = useContext(StoreContext);

@@ -1,4 +1,4 @@
-import Card from "./card/index";
+import Card from "./card/card";
 
 const Column = ({ column, columnIndex }) => {
   return (

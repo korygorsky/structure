@@ -1,4 +1,4 @@
-import Diagram from "../components/diagram/index";
+import Diagram from "../components/diagram";
 import DebugPanel from "../components/debug-panel";
 import KeyboardLegend from "../components/keyboard-legend/index";
 import StoreProvider from "../data/store";
