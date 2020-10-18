@@ -28,10 +28,12 @@ export const resolvers = {
       state.focusedCardIndex,
       state.structure[newColumn].length - 1
     );
+    const focusedCardId = state.structure[newColumn][newCardIndex].id;
     return {
       ...state,
       focusedColumnIndex: newColumn,
       focusedCardIndex: newCardIndex,
+      focusedCardId: focusedCardId,
       activePart: 0,
     };
   },
@@ -41,20 +43,24 @@ export const resolvers = {
       state.focusedCardIndex,
       state.structure[newColumn].length - 1
     );
-
+    const focusedCardId = state.structure[newColumn][newCardIndex].id;
     return {
       ...state,
       focusedColumnIndex: newColumn,
       focusedCardIndex: newCardIndex,
+      focusedCardId: focusedCardId,
       activePart: 0,
     };
   },
   navUp: (state) => {
-    const newCardIndex = Math.max(state.focusedCardIndex - 1, 0);
+    const newFocusedCardIndex = Math.max(state.focusedCardIndex - 1, 0);
+    const focusedCardId =
+      state.structure[state.focusedColumnIndex][newFocusedCardIndex].id;
     return {
       ...state,
-      focusedCardIndex: newCardIndex,
+      focusedCardIndex: newFocusedCardIndex,
       activePart: 0,
+      focusedCardId: focusedCardId,
     };
   },
   navDown: (state) => {
@@ -63,10 +69,13 @@ export const resolvers = {
       state.focusedCardIndex + 1,
       cardCount - 1
     );
+    const focusedCardId =
+      state.structure[state.focusedColumnIndex][newFocusedCardIndex].id;
 
     return {
       ...state,
       focusedCardIndex: newFocusedCardIndex,
+      focusedCardId: focusedCardId,
       activePart: 0,
     };
   },

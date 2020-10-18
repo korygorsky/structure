@@ -5,18 +5,14 @@ import Title from "./title";
 import SelectionBubble from "./selection-bubble";
 import useCard from "../../hooks/useCard";
 
-const Card = ({ card, cardIndex, columnIndex }) => {
+const Card = ({ card }) => {
   const { selectedCards } = useContext(StoreContext);
 
-  const [focused, selected, editingTitle, classNames] = useCard(
-    columnIndex,
-    cardIndex,
-    card
-  );
+  const [focused, selected, editingTitle, classNames] = useCard(card);
 
   return (
     <div
-      className={`relative ${classNames} rounded-lg w-56 border-solid shadow mb-4`}
+      className={`relative ${classNames} bg-white rounded-lg w-56 border-solid shadow mb-4`}
     >
       {selectedCards.length > 0 && <SelectionBubble selected={selected} />}
       <Title value={card.title} isEditing={editingTitle} />

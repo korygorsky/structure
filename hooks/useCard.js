@@ -6,15 +6,9 @@ import {
   MODE_EDIT_CARD_TITLE,
 } from "../data/modes";
 
-const useCard = (columnIndex, cardIndex, card) => {
-  const {
-    mode,
-    selectedCards,
-    focusedColumnIndex,
-    focusedCardIndex,
-  } = useContext(StoreContext);
-  const isFocusedColumn = columnIndex === focusedColumnIndex;
-  const isFocusedCard = isFocusedColumn && cardIndex === focusedCardIndex;
+const useCard = (card) => {
+  const { mode, selectedCards, focusedCardId } = useContext(StoreContext);
+  const isFocusedCard = focusedCardId === card.id;
   const focused = isFocusedCard && mode === MODE_EDIT_CARD;
   const editingTitle = isFocusedCard && mode === MODE_EDIT_CARD_TITLE;
   const selected =
